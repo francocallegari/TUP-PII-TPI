@@ -159,7 +159,7 @@ def ver_listado_libros(): #Funcion para ver listado de libros
             cant_ej_pr = libro["cant_ej_pr"]
             titulo = libro["titulo"]
             autor = libro["autor"]
-            print(f"{cod}, {titulo}, {autor}, {cant_ej_ad}, {cant_ej_pr}")
+            print(f"Código {cod}, {titulo}, de {autor}, {cant_ej_ad} ej. adquiridos, {cant_ej_pr} ej. prestados")
     elif ver_lista == "no":
         print()
     else:
