@@ -41,6 +41,8 @@ def registrar_nuevo_libro():
     return None
 
 def eliminar_ejemplar_libro():
+    ver_listado_libros()
+
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
     bandera = 0
 
@@ -66,6 +68,8 @@ def eliminar_ejemplar_libro():
 
 
 def prestar_ejemplar_libro():
+    ver_listado_libros()
+
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
     bandera = 0
 
@@ -104,6 +108,8 @@ def prestar_ejemplar_libro():
 
 
 def devolver_ejemplar_libro():
+    ver_listado_libros()
+
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
     bandera = 0
 
@@ -142,4 +148,21 @@ def devolver_ejemplar_libro():
 
 def nuevo_libro(): #No fue utilizada, se uso la función del archivo libro.py
     #completar
+    return None
+
+def ver_listado_libros(): #Funcion para ver listado de libros
+    ver_lista = str(input("¿Desea ver el listado de libros? Ingrese Si o No: ").lower())
+    if ver_lista == "si":
+        for libro in libros:
+            cod = libro["cod"]
+            cant_ej_ad = libro["cant_ej_ad"]
+            cant_ej_pr = libro["cant_ej_pr"]
+            titulo = libro["titulo"]
+            autor = libro["autor"]
+            print(f"{cod}, {titulo}, {autor}, {cant_ej_ad}, {cant_ej_pr}")
+    elif ver_lista == "no":
+        print()
+    else:
+        print("Opción no válida. Por favor, ingrese 'Si' o 'No'.")
+    
     return None
