@@ -8,7 +8,7 @@ libros.append(l.libro1)
 libros.append(l.libro2)
 libros.append(l.libro3)
 
-def ejemplares_prestados():
+def ejemplares_prestados(): #Ver ejemplares prestados
     for libro in libros:
         cod = libro["cod"]
         cant_ej_ad = libro["cant_ej_ad"]
@@ -25,7 +25,7 @@ def ejemplares_prestados():
     
     return None
             
-def registrar_nuevo_libro():
+def registrar_nuevo_libro(): #Registrar nuevo libro
     nuevo_libro = l.nuevo_libro()
 
     libros.append(nuevo_libro)
@@ -40,7 +40,7 @@ def registrar_nuevo_libro():
 
     return None
 
-def eliminar_ejemplar_libro():
+def eliminar_ejemplar_libro(): #Eliminar un ejemplar de un libro
     ver_listado_libros()
 
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
@@ -67,7 +67,7 @@ def eliminar_ejemplar_libro():
     return None
 
 
-def prestar_ejemplar_libro():
+def prestar_ejemplar_libro(): #Prestamo de libro
     ver_listado_libros()
 
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
@@ -107,7 +107,7 @@ def prestar_ejemplar_libro():
     return None
 
 
-def devolver_ejemplar_libro():
+def devolver_ejemplar_libro(): #Devolver libro
     ver_listado_libros()
 
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
@@ -146,9 +146,9 @@ def devolver_ejemplar_libro():
 
     return None
 
-def nuevo_libro(): #No fue utilizada, se uso la función del archivo libro.py
+"""def nuevo_libro():
     #completar
-    return None
+    return None"""  #No fue utilizada, se uso la función del módulo libro.py
 
 def ver_listado_libros(): #Funcion para ver listado de libros
     ver_lista = str(input("¿Desea ver el listado de libros? Ingrese Si o No: ").lower())
