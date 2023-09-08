@@ -8,7 +8,12 @@ libro3 = {'cod': 'adOd09UE', 'cant_ej_ad': 1, 'cant_ej_pr': 0, "titulo": "El có
 def nuevo_libro():
     #completar
     cod = generar_codigo()
-    cant_ej_ad = int(input("Ingrese la cantidad de ejemplares adquiridos: "))
+    while True:
+        try: #Con try logro forzar que el usuario si o si ingrese una cantidad valida 
+            cant_ej_ad = int(input("Ingrese la cantidad de ejemplares adquiridos: "))
+            break
+        except:
+            print("Ingrese una cantidad valida")
     while cant_ej_ad < 1:
         cant_ej_ad = int(input("Ingrese un número válido: "))
     titulo = input("Ingrese el título del libro: ")
