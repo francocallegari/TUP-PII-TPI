@@ -21,23 +21,22 @@ while respuesta != "salir":
     os.system ("cls") #Limpiar pantalla
     if opt.isnumeric():
         if int(opt) == 1:
-            #completar
+            print("Gestionar préstamo de un libro:")
+            bibloteca.prestar_ejemplar_libro()
             print()
         elif int(opt) == 2:
-            #completar
+            print("Gestionar devolución de un libro:")
+            bibloteca.devolver_ejemplar_libro()
             print()
         elif int(opt) == 3:
-            #completar
             print("Registro de nuevo libro:")
             bibloteca.registrar_nuevo_libro()
             print()
         elif int(opt) == 4:
-            #completar
             print("Eliminar un ejemplar de un libro:")
             bibloteca.eliminar_ejemplar_libro()
             print()
         elif int(opt) == 5:
-            #completar
             print("Lista de ejemplares prestados:")
             print("")
             bibloteca.ejemplares_prestados()

@@ -1,5 +1,5 @@
 import libro as l
-#comentario
+
 # Crear una lista vacía para almacenar los libros
 libros = []
 
@@ -9,7 +9,6 @@ libros.append(l.libro2)
 libros.append(l.libro3)
 
 def ejemplares_prestados():
-    # completar
     for libro in libros:
         cod = libro["cod"]
         cant_ej_ad = libro["cant_ej_ad"]
@@ -28,7 +27,6 @@ def ejemplares_prestados():
             
 def registrar_nuevo_libro():
     nuevo_libro = l.nuevo_libro()
-    #completar
 
     libros.append(nuevo_libro)
 
@@ -43,7 +41,6 @@ def registrar_nuevo_libro():
     return None
 
 def eliminar_ejemplar_libro():
-    #completar
     codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
     bandera = 0
 
@@ -67,14 +64,82 @@ def eliminar_ejemplar_libro():
 
     return None
 
+
 def prestar_ejemplar_libro():
-    #completar
+    codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
+    bandera = 0
+
+    for libro in libros:
+        cod = libro["cod"]
+
+        if codigo_buscar == cod:
+            bandera = 1
+            cant_ej_ad = libro["cant_ej_ad"]
+            cant_ej_pr = libro["cant_ej_pr"]
+            titulo = libro["titulo"]
+            autor = libro["autor"]
+            
+            ejemplares_disponibles = cant_ej_ad - cant_ej_pr
+            print(f"Autor: {autor}\nNombre: {titulo}\nCantidad de ejemplares disponibles: {ejemplares_disponibles}")
+
+            if ejemplares_disponibles == 0:
+                print("No quedan ejemplares para prestar.")
+            else:
+                confirmar_prestamo = None
+                while confirmar_prestamo not in ["si", "no"]:
+                    confirmar_prestamo = str(input("¿Desea confirmar el prestamo? Ingrese Si o No: ").lower())
+                    if confirmar_prestamo == "si":
+                        print("El prestamo fue realizado con éxito.")
+                        libro["cant_ej_pr"] += 1
+                    elif confirmar_prestamo == "no":
+                        print("Prestamo cancelado.")
+                    else:
+                        print("Opción no válida. Por favor, ingrese 'Si' o 'No'.")
+            break
+  
+    if bandera == 0:
+        print(f"No existe libro con código {codigo_buscar}")
+
     return None
+
 
 def devolver_ejemplar_libro():
-    #completar
+    codigo_buscar = str(input("Ingrese el codigo del libro a buscar: "))
+    bandera = 0
+
+    for libro in libros:
+        cod = libro["cod"]
+        ej_prestados = libro["cant_ej_pr"]
+        titulo = libro["titulo"]
+        autor = libro["autor"]
+
+        if codigo_buscar == cod and ej_prestados > 0:
+            bandera = 2
+            print(f"Código: {cod} - Nombre: {titulo} - Autor: {autor}")
+            confirmar_devolucion = None
+            while confirmar_devolucion not in ["si", "no"]:
+                confirmar_devolucion = str(input("¿Desea confirmar la devolución? Ingrese Si o No: ").lower())
+                if confirmar_devolucion == "si":
+                    libro["cant_ej_pr"] -= 1
+                    print("La devolución fue realizado con éxito.")
+                
+                elif confirmar_devolucion == "no":
+                    print("Devolución cancelada.")
+                else:
+                    print("Opción no válida. Por favor, ingrese 'Si' o 'No'.")
+            break
+        elif codigo_buscar == cod and not ej_prestados:
+            bandera = 1
+            break
+
+
+    if bandera == 1:
+        print(f"El libro con código {codigo_buscar} no tiene ejemplares prestados.")
+    elif bandera == 0:
+        print(f"No existe libro con código {codigo_buscar}")
+
     return None
 
-def nuevo_libro():
+def nuevo_libro(): #No fue utilizada, se uso la función del archivo libro.py
     #completar
     return None
