@@ -89,7 +89,7 @@ def prestar_ejemplar_libro(): #Prestamo de libro
             if ejemplares_disponibles == 0:
                 print("No quedan ejemplares para prestar.")
             else:
-                confirmar_prestamo = None
+                confirmar_prestamo = ""
                 while confirmar_prestamo not in ["si", "no"]:
                     confirmar_prestamo = str(input("¿Desea confirmar el prestamo? Ingrese Si o No: ").lower())
                     if confirmar_prestamo == "si":
@@ -122,7 +122,7 @@ def devolver_ejemplar_libro(): #Devolver libro
         if codigo_buscar == cod and ej_prestados > 0:
             bandera = 2
             print(f"Código: {cod} - Nombre: {titulo} - Autor: {autor}")
-            confirmar_devolucion = None
+            confirmar_devolucion = ""
             while confirmar_devolucion not in ["si", "no"]:
                 confirmar_devolucion = str(input("¿Desea confirmar la devolución? Ingrese Si o No: ").lower())
                 if confirmar_devolucion == "si":
@@ -151,18 +151,21 @@ def devolver_ejemplar_libro(): #Devolver libro
     return None"""  #No fue utilizada, se uso la función del módulo libro.py
 
 def ver_listado_libros(): #Funcion para ver listado de libros
-    ver_lista = str(input("¿Desea ver el listado de libros? Ingrese Si o No: ").lower())
-    if ver_lista == "si":
-        for libro in libros:
-            cod = libro["cod"]
-            cant_ej_ad = libro["cant_ej_ad"]
-            cant_ej_pr = libro["cant_ej_pr"]
-            titulo = libro["titulo"]
-            autor = libro["autor"]
-            print(f"Código {cod}, {titulo}, de {autor}, {cant_ej_ad} ej. adquiridos, {cant_ej_pr} ej. prestados")
-    elif ver_lista == "no":
-        print()
-    else:
-        print("Opción no válida. Por favor, ingrese 'Si' o 'No'.")
+    ver_lista = ""
+    while ver_lista not in ["si", "no"]:
+        ver_lista = str(input("¿Desea ver el listado de libros? Ingrese Si o No: ").lower())
     
+        if ver_lista == "si":
+            for libro in libros:
+                cod = libro["cod"]
+                cant_ej_ad = libro["cant_ej_ad"]
+                cant_ej_pr = libro["cant_ej_pr"]
+                titulo = libro["titulo"]
+                autor = libro["autor"]
+                print(f"Código {cod}, {titulo}, de {autor}, {cant_ej_ad} ej. adquiridos, {cant_ej_pr} ej. prestados")
+        elif ver_lista == "no":
+            print()
+        else:
+            print("Opción no válida. Por favor, ingrese 'Si' o 'No'.")
+
     return None
